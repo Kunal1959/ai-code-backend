@@ -43,7 +43,8 @@ export default async function handler(req, res) {
 
   try {
     // Validate request body
-    const { prompt, language, taskType } = req.body;
+    const enhancedPrompt = `Generate ${taskType} code in ${language} for the following requirement:
+${prompt}`;
     
     if (!prompt || !language || !taskType) {
       return res.status(400).json({ 
@@ -134,3 +135,4 @@ export default async function handler(req, res) {
     });
   }
 }
+
